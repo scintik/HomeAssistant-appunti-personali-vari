@@ -10,6 +10,8 @@ Esempio:
 
 ![](https://github.com/scintik/HomeAssistant_appunti_vari/blob/master/img/Supervisor_error.png)
 
+*Supervisor -> System*
+
 Qui home assistant gira su un Raspberry con distribuzione Stretch (9.x) ma dall'immagine si vede che il Supervisor è il 235 che richiede delle specifiche particolari.
 Cliccando sul link [[Learn More](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)] si può leggere le specifiche:
 
