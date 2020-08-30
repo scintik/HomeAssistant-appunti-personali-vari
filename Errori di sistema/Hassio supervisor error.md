@@ -73,7 +73,7 @@ sudo apt-get remove apt-listchanges
 Il modo piu' semplice e' l'esecuzione dei comanandi
 ```bash
 sudo apt-get dist-upgrade
-sudo apt-get remove apt-listchanges
+sudo apt-get install apt-listchanges
 ```
 
 ***
