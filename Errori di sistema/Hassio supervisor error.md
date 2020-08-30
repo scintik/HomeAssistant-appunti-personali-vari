@@ -12,7 +12,7 @@ Esempio:
 
 *Supervisor -> System*
 
-Qui home assistant gira su un Raspberry con distribuzione Stretch (9.x) ma dall'immagine si vede che il Supervisor è il 235 che richiede delle specifiche particolari.
+Qui home assistant gira su un Raspberry con distribuzione Stretch (9.x) ma dall'immagine si vede che il Supervisor e' il 235 (in questo caso) che richiede delle specifiche particolari.
 Nella stessa schermata è possibile vedere che versione di Linux sta girando.
 
 Cliccando sul link [[Learn More](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)] si può leggere le specifiche:
@@ -48,7 +48,7 @@ Aggiornare i sorgenti di apt-get rimpiazzando "stretch" con "burst" nei reposito
 ```bash
 sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list    
 sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/raspi.list
-sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/raspi.list
+sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/docker.list
 ```
 Verificare che questi comandi siano andati a vuon fine: equivale a dire che non avremo alcun tipo di output sulla console.
 Per verificare le 2 righe sopra riportate possiamo eseguire 2 controlli:
@@ -63,13 +63,22 @@ Se tutto è andato bene non dovremmo avere nessun output a schermo
 cat /etc/apt/sources.list | grep burst
 cat /etc/apt/sources.list.d/raspi.list | grep burst
 ```
-In questo caso dovremmo ottenere una o pio' righe con la parola evidenziata (su un raspberry che usa *bash* come console in genere la parola è in rosso)
+In questo caso dovremmo ottenere una o piu' righe con la parola evidenziata (su un raspberry che usa *bash* come console in genere la parola è in rosso)
 
 Adesso diamo un comando per velocizzare i passaggi successivi: rimuoviamo il pacchetto che tiene traccia delle modifiche dell'elenco.
 ```bash
 sudo apt-get remove apt-listchanges
 ```
 ### Facciamo l'Upgrade
+Il modo piu' semplice e' l'esecuzione dei comanandi
+```bash
+sudo apt-get dist-upgrade
+sudo apt-get remove apt-listchanges
+```
+
+***
+### Metodo alternativo...
+**...che onestamente non mi ha convinto: da rivedere un po' tutto l'articolo!**
 
 **ATTENZIONE** Scegliere uno solo dei due passaggi sotto riportati: **non** eseguirli entrambi!!!
 
@@ -91,8 +100,8 @@ Puliamo i pacchetti obsoleti rimuovendoli.
 ```bash
 sudo apt-get autoremove -y && sudo apt-get autoclean
 ```
-Verifichiamo che siamo passati alla versione deiderata con:
+Verifichiamo che siamo passati alla versione desiderata con:
 ```bash
 cat /etc/os-release
 ```
-Adesso è rimasto soltanto 
+Adesso è rimasto soltanto di eseguire un reboot
