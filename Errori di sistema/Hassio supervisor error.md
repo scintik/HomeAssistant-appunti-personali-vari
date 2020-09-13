@@ -1,3 +1,6 @@
+# DEPRECATO
+## ERRORI ed INESATTEZZE: da riscrivere!! 
+
 # Hassio supervisor error
 ## You are running an unsupported installation.
 ## Sta girando una installazione non supportata
