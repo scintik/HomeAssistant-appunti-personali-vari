@@ -1,13 +1,9 @@
-# DEPRECATO
-## ERRORI ed INESATTEZZE: da riscrivere!! 
-
 # Hassio supervisor error
-## You are running an unsupported installation.
-## Sta girando una installazione non supportata
+## Sta girando una installazione non supportata (You are running an unsupported installation.)
 
-Questo tipo di errore può capitare quando si ha installato un sistema base di linux come (si veda..) e non è lo stesso dello specifiche di Home Assitant.
+Questo tipo di errore *può capitare* quando si ha installato un sistema base di linux come (si veda..) e non è lo stesso dello specifiche di Home Assitant.
 
-Dato che Home Assistant lavora sul concetto del "paccketto completo", ovvero anche il sistema operativo chi stesse usando docker o python env potrebbe incappare in questo errore.
+Dato che Home Assistant lavora sul concetto del "pacchetto completo" (ovvero fornire anche il sistema operativo) chi stesse usando docker o python env potrebbe incappare in questo tipo di messaggio.
 
 Esempio:
 
@@ -15,7 +11,7 @@ Esempio:
 
 *Supervisor -> System*
 
-Qui home assistant gira su un Raspberry con distribuzione Stretch (9.x) ma dall'immagine si vede che il Supervisor e' il 235 (in questo caso) che richiede delle specifiche particolari.
+Nel nostro caso, da cui è trtto l'esempio, Home Assistant gira su un Raspberry con distribuzione Stretch (9.x) e dall'immagine sopra si vede che il Supervisor e' il 235 (in questo caso) che richiede delle specifiche particolari.
 Nella stessa schermata è possibile vedere che versione di Linux sta girando.
 
 Cliccando sul link [[Learn More](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)] si può leggere le specifiche:
@@ -36,75 +32,15 @@ Cliccando sul link [[Learn More](https://github.com/home-assistant/architecture/
 Si può notare all'ultimo punto che e' supportato Debian 10 (al momento della stesura di questo articolo).
 Avendo, sul Raspberry, una Debian 9 (Stretch) per tenere aggiornato Home Assistant bisogna aggiornare anche tutto il sistema alla versione richiesta (qui la 10, cioe' "Burst")
 
-## Aggiornare
-Per prima cosa provvederemo ad aggiornare il sistema alla versione attuale con i classici:
-```bash
-sudo apt-get update && sudo apt-get upgrade -y
-```
-Verifichiamo che tutto sia a posto, non ci siano errori dopo i precedenti comandi ed eventualmente corregerli.
-```bash
-dpkg -C
-apt-mark showhold
-```
-### Preparare i sorgenti di apt-get
-Aggiornare i sorgenti di apt-get rimpiazzando "stretch" con "burst" nei repository. 
-```bash
-sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list    
-sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/raspi.list
-sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/docker.list
-```
-Verificare che questi comandi siano andati a vuon fine: equivale a dire che non avremo alcun tipo di output sulla console.
-Per verificare le 2 righe sopra riportate possiamo eseguire 2 controlli:
-- verificare sia stato tolto dai repository la versione *Stretch*
-```bash
-cat /etc/apt/sources.list | grep stretch
-cat /etc/apt/sources.list.d/raspi.list | grep stretch
-```
-Se tutto è andato bene non dovremmo avere nessun output a schermo
-- Se vogliamo vedere che sia stato messa la versione *Burst* nei ripository:
-```bash
-cat /etc/apt/sources.list | grep burst
-cat /etc/apt/sources.list.d/raspi.list | grep burst
-```
-In questo caso dovremmo ottenere una o piu' righe con la parola evidenziata (su un raspberry che usa *bash* come console in genere la parola è in rosso)
+Vedremo come aggiornare il sottosistema ma è importante tenere presente che:
+### NON E' DETTO CHE BASTI AGGIORNARE
+Infatti come dicevo prima Home Assistant è considerato dagli sviluppatori un blocco unico da loro fornito.
 
-Adesso diamo un comando per velocizzare i passaggi successivi: rimuoviamo il pacchetto che tiene traccia delle modifiche dell'elenco.
-```bash
-sudo apt-get remove apt-listchanges
-```
-### Facciamo l'Upgrade
-Il modo piu' semplice e' l'esecuzione dei comanandi
-```bash
-sudo apt-get dist-upgrade
-sudo apt-get install apt-listchanges
-```
+Nel nostro caso è probabile che anche l'aggiornamento a Raspbian 10 Burst (o RaspyOS 10 come si chiamerà), no nrisolverà il problema poichè almeno nelle prime versioni delle probabile release NetworkManager non soddisfera' le caratteristiche.
 
-***
-### Metodo alternativo...
-**...che onestamente non mi ha convinto: da rivedere un po' tutto l'articolo!**
+**E' grave avere questo errore?**
+Non esiste una risposta precisa, poichè bisogna vedere cosa cambia da una versione all'altra di un specifico pacchetto e cosa e' stato usato dagli svillupatori. Per quanto possa sembrare una risposta imprecisa attualemente vale la regola di provare e vedere se tutto funziona ed eventualemnte dare uno sguardo anche ai log che non ci siano segnali di ERROR.
 
-**ATTENZIONE** Scegliere uno solo dei due passaggi sotto riportati: **non** eseguirli entrambi!!!
+## Aggiornare il sottosistema Linux
+Si veda articolo...
 
-(**NON consigliato** per il nostro caso ma qualcuno potrebbe preferirlo) 
-Per aggiornare i pacchetti installati senza aggiornare il kernel ed i suoi moduli, eseguire:
-```bash
-sudo apt-get update && sudo apt-get upgrade -y
-```
-(**Consigliato**) 
-Per aggiornare tutti i pacchetti installati, compreso kernel e moduli.
-```bash
-sudo apt-get update && sudo apt-get full-upgrade -y
-```
-Usate il *secondo* se non siete ultra sicuri di cosa state facendo!
-
-*Entrambi i metodi potrebbero richiedere diversi minuti*
-
-Puliamo i pacchetti obsoleti rimuovendoli.
-```bash
-sudo apt-get autoremove -y && sudo apt-get autoclean
-```
-Verifichiamo che siamo passati alla versione desiderata con:
-```bash
-cat /etc/os-release
-```
-Adesso è rimasto soltanto di eseguire un reboot
