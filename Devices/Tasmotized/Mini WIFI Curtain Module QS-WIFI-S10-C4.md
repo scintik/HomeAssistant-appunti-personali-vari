@@ -2,10 +2,18 @@
 
 #### Modulo MiniCurtain <bR> Mini WIFI Curtain Module QS-WIFI-S10-C4 (Tuya)
 
-Il modulo acquistato usa chip **CBLC9** programmato per il mondo *Tuya*.
-Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware.
+![Mini WIFI Curtain Module](../Images/MiniWIFICurtainModule.png)
 
-Alla fine ho optato per un a modifica hardware sostituendo il modulo *CBLC9* con un *ESP-02S*.
+Il modulo acquistato usa un modulo **CBLC9**, al cui interno si trova un chip BK7231N programmato per il mondo *Tuya*.
+Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporate. OpenBeken presenta ogni singolo switch separatamente.
+
+![CBLC9](../Images/CBLC9_default.png)
+
+Dopo una prima idea di intervenire sul software cercando di andare a capire il funzionamento del protocollo MQTT, mi sono reso conto che era fuori dalla mia portata.
+Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con un *ESP-02S* e programmazione di quest'ultimo con Tasmota.
+
+![ESP-02s](../Images/ESP-02s.png)
+
 Questo ha comportato l'apertura dello scatolino e la <u>dissaldatura</u> del modulo originale.
 Poi, oviamente, sulle piazzole del PCB sono stati saldati gli otto fili necessari e <u>riportati fuori dalla scatola</u> per poter essere connessi al <u>modulo ESP-02S posto esternamente</u>.
 
