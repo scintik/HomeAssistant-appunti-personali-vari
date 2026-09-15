@@ -29,7 +29,7 @@ Sul modulo CBCL9 abbiamoi i seguenti piedini (con relative funzioni):
 | P9 | Relay UP | $\color{blue}{\text{Blu}}$ |
 | P6 | Switch esterno SU | $\color{purple}{\text{Viola}}$ |
 | P24 | Switch interno | $\color{green}{\text{Verde}}$ |
-| P26 | Switch Esterno GIU | $\color{#ffcc00}{\textsf{GialloHex text}}$ |
+| P26 | Switch Esterno GIU | $\color{#ffcc00}{\textsf{Giallo}}$ |
 
 Prima di saldare l'**ESP-02S** ai vari cavi è stato caricato su quest'ultimo il firmware Tasmota ultima versione.
 
@@ -39,7 +39,7 @@ La connessione dei cavi su ESP ha seguito combinazione
 | RST | -- NC --|
 | A0 | -- NC --|
 | 13 | $\color{blue}{\text{Blu}}$ |
-| 04 | $\color{#ffcc00}{\textsf{GialloHex text}}$ | 
+| 04 | $\color{#ffcc00}{\textsf{Giallo}}$ | 
 | 05 | $\color{green}{\text{Verde}}$ |
 | Altro lato |
 | 14 | $\color{purple}{\text{Viola}}$ |
@@ -56,3 +56,13 @@ Andare nel menu “**Configuration**” > “**Module**” e impostare il modell
 Poi recarsi alla voce di menu “**Configuration**” > “**Configure Other**” e impostare la seguente stringa:
 
 **`{“NAME”:”NOME_DEVICE”,”GPIO”:255,255,0,255,0,22,255,17,21,56,0,0,0],”FLAG”:0,”BASE”:39}`**
+
+*N.b. La stringa NOME_DEVICE può essere personalizzata.*
+
+Selezionare la spunta “**Activate**” e cliccare poi su “**Save**“.
+
+Portarsi ora sul menu principale, entrare su “<u>Console</u>” e inserire il seguente comando:
+
+### $\color{green}{\text{ SetOption80 1 }}$
+
+
