@@ -52,6 +52,7 @@ La connessione dei cavi su ESP ha seguito combinazione
 Una volta avviato il modulo per la prima volta Tasmota si metterà in modalità AP e collegandosi possiamo inserire i parametri della nostra rete.
 A questo punto va configurato il firmware Tasmota in modo da fargli apprendere su quale attuatore esso si trovi.
 Andare nel menu “**Configuration**” > “**Module**” e impostare il modello d’interesse (eg. Sonoff Dual).  <---
+
 Poi recarsi alla voce di menu “**Configuration**” > “**Configure Other**” e impostare la seguente stringa:
 
- **`{“NAME”:”NOME_DEVICE”,”GPIO”:255,255,0,255,0,22,255,17,21,56,0,0,0],”FLAG”:0,”BASE”:39}`**
+**`{“NAME”:”NOME_DEVICE”,”GPIO”:255,255,0,255,0,22,255,17,21,56,0,0,0],”FLAG”:0,”BASE”:39}`**
