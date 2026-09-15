@@ -5,7 +5,7 @@
 ![Mini WIFI Curtain Module](../Images/MiniWIFICurtainModule.png)
 
 Il modulo acquistato usa un modulo **CBLC9**, al cui interno si trova un chip BK7231N programmato per il mondo *Tuya*.
-Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporate. OpenBeken presenta ogni singolo switch separatamente. Si veda ![qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) consultato il 15/09/2026.
+Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporate. OpenBeken presenta ogni singolo switch separatamente. Si veda [qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) consultato il 15/09/2026.
 
 ![CBLC9](../Images/CBLC9_default.png)
 
