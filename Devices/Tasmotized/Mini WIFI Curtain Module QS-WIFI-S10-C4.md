@@ -70,7 +70,7 @@ Selezionare la spunta “**Activate**” e cliccare poi su “**Save**“.
 
 Portarsi ora sul menu principale, entrare su “<u>Console</u>” e inserire il seguente comando:
 
-$\color{green}{\textbf{SetOption80 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/))
+> $\color{green}{\textbf{SetOption80 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/))
 
 che restituirà il seguente output: $\color{blue}{\textbf{ RESULT = {“SetOption80″:”ON”} }}$
 
@@ -78,13 +78,13 @@ Adesso è necessario attivare l’interblocco tra i due tasti/comandi di salita 
 
 Sulla console digitiamo i seguenti comandi:
 
-$\color{green}{\textbf{Interlock 1,2}}$
+> $\color{green}{\textbf{Interlock 1,2}}$
 
-$\color{green}{\textbf{Interlock ON}}$
+> $\color{green}{\textbf{Interlock ON}}$
 
 Ed infine la modalità di funzionamento dei singoli pulsanti. Tipicamente: SU/STOP e GIU/STOP ovvero, alla prima pressione si invia il comando di salita o discesa alla seconda pressione si ferma la procedura, cioè blocchiamo la tapparella dove si trova.
 
-$\color{green}{\textbf{ShutterRelay1 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/#shutter-modes))
+> $\color{green}{\textbf{ShutterRelay1 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/#shutter-modes))
 
 <!---  ###### Da finire ######   https://indomus.it/guide/gestire-le-tapparelle-elettriche-tramite-firmware-tasmota-v2/
 
