@@ -65,7 +65,7 @@ Andare nel menu “**Configuration**” > “**Module**” e impostare il modell
 
 Poi recarsi alla voce di menu “**Configuration**” > “**Configure Other**” e impostare la seguente stringa:
 
-**`{“NAME”:”NOME_DEVICE”,”GPIO”:255,255,0,255,0,22,255,17,21,56,0,0,0],”FLAG”:0,”BASE”:39}`**
+**`{"NAME":"SC500W","GPIO":[0,0,0,576,160,161,0,0,224,32,225,0,0,0],"FLAG":0,"BASE":18}`**
 
 *N.b. La stringa NOME_DEVICE può essere personalizzata.*
 
@@ -90,7 +90,9 @@ Ed infine la modalità di funzionamento dei singoli pulsanti. Tipicamente: SU/ST
 > $\color{green}{\textbf{ShutterRelay1 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/#shutter-modes))
 
 <!---  ###### Da finire ######   https://indomus.it/guide/gestire-le-tapparelle-elettriche-tramite-firmware-tasmota-v2/
-
+Risposta
+SHT: RESET/INIT CALIBRATION MATRIX DIV 0
+19:19:39.331 RSL: RESULT = {"ShutterRelay1":1}
 Cronometraggio
 Ora è necessario cronometrare i tempi di alzata e discesa della tapparella (a meno che non siano già disponibili perché ereditati dalla fork).
 
