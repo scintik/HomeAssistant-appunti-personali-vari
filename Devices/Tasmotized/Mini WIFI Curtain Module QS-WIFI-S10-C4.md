@@ -96,14 +96,13 @@ Ora è necessario cronometrare i tempi di alzata e discesa della tapparella. <br
 Per farlo portarsi in una delle due posizioni estreme (tutto aperto o tutto chiuso) e attivare la funzione desiderata cronometrando il tempo che impiega la tapparella e poi viceversa. <br\>
 Partiamo con la situazione in cui la tapparella è tutta aperta.<br\>
 In <i>console</i> diamo il comando:
-> $\color{green}{\textbf{ShutterSetOpen 1}}$
+> $\color{green}{\textbf{ShutterSetOpen 1}}$ <br\>
 Quindi digitiamo i tempi di salita e discesa (ad esempio 32 secondi per chiudere e 38 per aprire):
+
 > $\color{green}{\textbf{ShutterOpenDuration1 32}}$
+
 > $\color{green}{\textbf{ShutterCloseDuration1 38}}$
 
-In console avremo sempre una risposta di tipo $\color{blue}{\textbf{ RESULT = {“RESULT=.."}}$ con il comando eseguito e cosa è successo.
+In console avremo sempre una risposta di tipo $\color{blue}{\textbf{“RESULT=.."}}$ con il comando eseguito e cosa è successo.
 
 A questo punto l'attuatore dovrebbe funzionare correttamente, eventualmente ricontrollare i vari passaggi con calma.
-
---->
-
