@@ -6,18 +6,18 @@
 <!--- 
 ![Mini WIFI Curtain Module](../Images/MiniWIFICurtainModule.png)
 --->
-Il modulo da me acquistato usa un modulo <b>CBLC9</b>, al cui interno si trova un chip BK7231N programmato per il mondo <i>Tuya</i>.
-Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in <i>Home Assistant</i> come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. Nota, si può gestire anche tramite plugin "Tasmota". I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporati. OpenBeken presenta ogni singolo switch separatamente. Si veda [qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) (consultato il 15/09/2026).
+Il modulo da me acquistato usa un modulo **CBLC9**, al cui interno si trova un chip BK7231N programmato per il mondo *Tuya*.
+Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. Nota, si può gestire anche tramite plugin "Tasmota". I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporati. OpenBeken presenta ogni singolo switch separatamente. Si veda [qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) (consultato il 15/09/2026).
 
-<img src="../Images/CBLC9_default.png" alt="CBLC9" style="width: 50%;"> 
+<img src="../Images/CBLC9_default.png" alt="CBLC9" style="width: 50%;"></img>
 
-<i>Immagine di esempio che potrebbe essere diversa</i>
+*Immagine di esempio che potrebbe essere diversa*
 
 <!--- 
 ![CBLC9](../Images/CBLC9_default.png) 
 --->
 Dopo una prima idea di intervenire sul software cercando di andare a capire il funzionamento del protocollo MQTT, mi sono reso conto che era fuori dalla mia portata.
-Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con un <i>ESP-02S</i> e programmazione di quest'ultimo con Tasmota.
+Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con un *ESP-02S* e programmazione di quest'ultimo con Tasmota.
 
 <img src="../Images/ESP-02s.png" alt="ESP-02s" style="width: 50%;"></img>
 <!--- 
@@ -27,7 +27,7 @@ Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con 
 Questo ha comportato l'apertura dello scatolino e la <u>dissaldatura</u> del modulo originale.
 Poi, oviamente, sulle piazzole del PCB sono stati saldati gli otto fili necessari e <u>riportati fuori dalla scatola</u> per poter essere connessi al <u>modulo ESP-02S posto esternamente</u>.
 
-Sul modulo CBCL9 abbiamoi i seguenti piedini (con relative funzioni):
+Sul modulo CBCL9 abbiamo i seguenti piedini (riporto anche le relative funzioni):
 
 | Nome | Funzione | Colore assegn.|
 | - | - | - |
@@ -65,13 +65,14 @@ Andare nel menu “**Configuration**” > “**Module**” e impostare il modell
 
 Poi recarsi alla voce di menu “**Configuration**” > “**Configure Other**” e impostare la seguente stringa:
 
-**`{"NAME":"SC500W","GPIO":[0,0,0,576,160,161,0,0,224,32,225,0,0,0],"FLAG":0,"BASE":18}`**
+~~**`{"NAME":"SC500W","GPIO":[0,0,0,576,160,161,0,0,224,32,225,0,0,0],"FLAG":0,"BASE":18}`**~~
 
 *N.b. La stringa NOME_DEVICE può essere personalizzata.*
+(La stringa sopra è sbagliata: va ricalcolata)
 
 Selezionare la spunta “**Activate**” e cliccare poi su “**Save**“.
 
-Portarsi ora sul menu principale, entrare su “<u>Console</u>” e inserire il seguente comando:
+Portarsi ora sul menu principale, entrare su “<u>Console</u>” e inserire il seguente comando come prima cosa per definire che il dispositivo è un attuatore per tapparelle, tende, ecc:
 
 > $\color{green}{\textbf{SetOption80 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/))
 
@@ -89,43 +90,20 @@ Ed infine la modalità di funzionamento dei singoli pulsanti. Tipicamente: SU/ST
 
 > $\color{green}{\textbf{ShutterRelay1 1}}$  ([Rif.](https://tasmota.github.io/docs/Blinds-and-Shutters/#shutter-modes))
 
-<!---  ###### Da finire ######   https://indomus.it/guide/gestire-le-tapparelle-elettriche-tramite-firmware-tasmota-v2/
-Risposta
-SHT: RESET/INIT CALIBRATION MATRIX DIV 0
-19:19:39.331 RSL: RESULT = {"ShutterRelay1":1}
-Cronometraggio
-Ora è necessario cronometrare i tempi di alzata e discesa della tapparella (a meno che non siano già disponibili perché ereditati dalla fork).
+**Incongruenza** Se non metto *SwitchMode1 3* e *SwitchMode2 3* sembra no funzionare quanto sopra: **da approfondire**
 
-Per farlo, portare la tapparella nella posizione di massima chiusura, attivare la salita cronometrandone la durata fino al punto di massima apertura; effettuare poi la cosa contraria misurando la discesa. Si consiglia la massima accuratezza possibile.
+Ora è necessario cronometrare i tempi di alzata e discesa della tapparella. <br\>
+Per farlo portarsi in una delle due posizioni estreme (tutto aperto o tutto chiuso) e attivare la funzione desiderata cronometrando il tempo che impiega la tapparella e poi viceversa. <br\>
+Partiamo con la situazione in cui la tapparella è tutta aperta.<br\>
+In <i>console</i> diamo il comando:
+> $\color{green}{\textbf{ShutterSetOpen 1}}$
+Quindi digitiamo i tempi di salita e discesa (ad esempio 32 secondi per chiudere e 38 per aprire):
+> $\color{green}{\textbf{ShutterOpenDuration1 32}}$
+> $\color{green}{\textbf{ShutterCloseDuration1 38}}$
 
-Ora, sempre alla voce “Console” dell’interfaccia web, eseguire il seguente comando:
+In console avremo sempre una risposta di tipo $\color{blue}{\textbf{ RESULT = {“RESULT=.."}}$ con il comando eseguito e cosa è successo.
 
-ShutterSetClose 1
-
-che confermerà al firmware la posizione di chiusura della tapparella:
-
-RESULT = {“ShutterSetClose1″:”Configuration reset”}
-
-Per impostare il tempo di apertura totale della tapparella, se il tempo è ad esempio di 28 secondi, digitiamo:
-
-ShutterOpenDuration1 28
-
-Il risultato sarà:
-
-ShutterMode: 1
-RESULT = {“ShutterOpenDuration1”:28.0}
-
-Per impostare il tempo di chiusura totale della tapparella, se il tempo è ad esempio di 25 secondi, digitiamo:
-
-ShutterCloseDuration1 25
-
-Il risultato sarà:
-
-ShutterMode: 1
-RESULT = {“ShutterCloseDuration1”:25.0}
- 
-
-Complimenti: il vostro attuatore è così configurato correttamente.
+A questo punto l'attuatore dovrebbe funzionare correttamente, eventualmente ricontrollare i vari passaggi con calma.
 
 --->
 
