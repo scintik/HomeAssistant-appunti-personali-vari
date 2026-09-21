@@ -2,24 +2,24 @@
 
 #### Modulo MiniCurtain <bR> Mini WIFI Curtain Module QS-WIFI-S10-C4 (Tuya)
 
-<img src="../Images/MiniWIFICurtainModule.png" alt="Mini WIFI Curtain Module" style="width: 30%;">
+<img src="../Images/MiniWIFICurtainModule.png" alt="Mini WIFI Curtain Module" style="width: 30%;"></img>
 <!--- 
 ![Mini WIFI Curtain Module](../Images/MiniWIFICurtainModule.png)
 --->
-Il modulo da me acquistato usa un modulo **CBLC9**, al cui interno si trova un chip BK7231N programmato per il mondo *Tuya*.
-Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in *Home Assistant* come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporate. OpenBeken presenta ogni singolo switch separatamente. Si veda [qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) consultato il 15/09/2026.
+Il modulo da me acquistato usa un modulo <b>CBLC9</b>, al cui interno si trova un chip BK7231N programmato per il mondo <i>Tuya</i>.
+Dopo un primo tentativo, funzionante, con [OpenBeken](https://www.elektroda.com/rtvforum/topic4049271.html) è stato più arduo (impossibile?) integrarlo in <i>Home Assistant</i> come tapparella, per il motivo di come veniva esposto il device su MQTT dal firmware. Nota, si può gestire anche tramite plugin "Tasmota". I dispositivi per comando tapparelle dotati di Tasmota, vengono presentati in MQTT (o per ESPHome) come dispositivo unico con diverse entità (switch e ralay) incorporati. OpenBeken presenta ogni singolo switch separatamente. Si veda [qui](https://github.com/openshwprojects/OpenBK7231T_App/blob/main/docs/homeAssistant.md) (consultato il 15/09/2026).
 
 <img src="../Images/CBLC9_default.png" alt="CBLC9" style="width: 50%;"> 
 
-*Immagine di esempio che potrebbe essere diversa*
+<i>Immagine di esempio che potrebbe essere diversa</i>
 
 <!--- 
 ![CBLC9](../Images/CBLC9_default.png) 
 --->
 Dopo una prima idea di intervenire sul software cercando di andare a capire il funzionamento del protocollo MQTT, mi sono reso conto che era fuori dalla mia portata.
-Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con un *ESP-02S* e programmazione di quest'ultimo con Tasmota.
+Alla fine ho optato per una modifica hardware sostituendo il modulo *CBLC9* con un <i>ESP-02S</i> e programmazione di quest'ultimo con Tasmota.
 
-<img src="../Images/ESP-02s.png" alt="ESP-02s" style="width: 50%;">
+<img src="../Images/ESP-02s.png" alt="ESP-02s" style="width: 50%;"></img>
 <!--- 
 ![ESP-02s](../Images/ESP-02s.png)
 --->
