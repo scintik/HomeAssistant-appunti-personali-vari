@@ -33,5 +33,5 @@ Nella pratica ho visto che nella mia situazione di domotica non c'è una reale e
 <u>ATTENZIONE</u>: nel creare le label, non usare caratteri speciali o maiuscoli.
 #### Battezzare le entità
 Andiamo ala scheda di dettaglio dell’entità desiderata e, alla voce etichetta, aggiungiamo “**alexa**“:
-
+<img src="../img/HA_LabelAlexa.png" alt="CBLC9" style="width: 50%;"></img>
 *immagine di esempio su una lampada*
