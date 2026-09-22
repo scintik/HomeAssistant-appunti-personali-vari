@@ -32,6 +32,33 @@ Nella pratica ho visto che nella mia situazione di domotica non c'è una reale e
 
 <u>ATTENZIONE</u>: nel creare le label, non usare caratteri speciali o maiuscoli.
 #### Battezzare le entità
-Andiamo ala scheda di dettaglio dell’entità desiderata e, alla voce etichetta, aggiungiamo “**alexa**“:
-<img src="../img/HA_LabelAlexa.png" alt="CBLC9" style="width: 50%;"></img>
+Andiamo ala scheda di dettaglio dell’entità desiderata, scegliamo la matita per "*edit settings*"  e, alla scheda aperta scegliamo '+add label' e scriviamo la nostra etichetta “**alexa**“ (senza virgolette):
+
+<img src="../img/HA_LabelAlexa.png" alt="CBLC9" style="width: 50%;"></img><br>
 *immagine di esempio su una lampada*
+
+Quindi secgliamo **Update** per confermare.<br>
+Ripetiamo l'operazione di atichettatura per tutte le entità di interesse. Al termine, saremo pronti per definire un nuovo bridge con HAMH.
+> ATTENZIONE: non necessariamente tutte le entità di Home Assistant, sebbene magari supportate da Alexa, sono effettivamente esponibili tramite Matter. Per maggiori info, consultare la [la documentazione di HAMH](https://t0bst4r.github.io/home-assistant-matter-hub/supported-device-types).<br>**N.b.** Provvedere ad etichettare come sopra spiegato almeno una entità. *Non superare le 50 entità*, come consiglio di base.
+
+### Configurare il bridge su HAMH
+Andare ora presso l’interfaccia web di HAMH (sulla barra laterale sinistra in caso di Home Assistant OS, oppure alla porta 8482, via http, all’indirizzo IP dell’host ospitante HAMH, ad esempio http://192.168.1.100:**8482**)
+
+Cliccare su “**Create a new bridge**“:
+
+quindi compilare come segue:
+
+- <u>Name</u>: inserire “**alexa_hamh**” (oppure un nome a piacere);
+- <u>Port</u>: lasciare quella di *default* (solitamente la **5540**);
+- <u>Country code</>: **IT**
+
+poi cliccare sul “**+**” nella sezione “**Include**“:
+
+- selezionare, come <u>Type</u>, “**label**“
+- <u>value</u>, indicare “**alexa**“
+
+e infine recarsi in fondo alla pagina e cliccare su “**Save**“.
+<!--- ------------------------------------
+continuare:
+https://indomus.it/guide/integrare-home-assistant-ad-amazon-alexa-via-matter-con-hamh/
+------------------------------------- --->
