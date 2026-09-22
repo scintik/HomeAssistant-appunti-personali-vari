@@ -4,7 +4,7 @@
 *Si da per scontato che si possegga un dispositivo Amazon della famiglia Alexa con relativo account associato al dispositivo, uno smartphone con l'app "Amazon Alexa" installata*
 
 **H**ome **A**ssistant **M**atter Bridge (HAMH) quale BRIDGE/Gateway Matter, permette di esporre le entità di Home Assistant verso Alexa (o altri sistemi Matter-compatibili). <br>
-HAMH NON funziona su dispostivi Echo di prima generazione ed alcuni modelli meno recenti.
+*HAMH <u>NON</u> funziona su dispostivi Echo di prima generazione ed alcuni modelli meno recenti.*
 
 Per prima cosa è necessario metter mano HAMH, una volta installato in HA al suo avvio sarà vuoto e pronto per configurare uno o più bridge Matter.
 Per istanziare tale software, le guide variano in base al proprio contesto operativo:
